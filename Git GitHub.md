@@ -189,6 +189,8 @@ git push -u origin <branch_name>
 
 `--set-upstream` or `-u`  links your local branch to the specified remote branch, allowing you to later use  `git push` or `git pull` without specifying the remote and branch.
 
+`origin` is a shortcut alias for the URL of the remote Git repository.
+
 ```
 git push origin main
 ```
@@ -265,10 +267,66 @@ GitHub is a proprietary developer platform that allows developers to create, sto
 
 ##### fork
 
-
+A fork is a new repository that shares code and visibility settings with the original "upstream" repository.
 
 ##### pr
 
-Create a **pull request** on GitHub or other hosting platforms that invite  team members to code review. When PR merges, your changes merge into the main branch.
+Create a **pull request** on GitHub or other hosting platforms that invite team members to code review. When PR merges, your changes merge into the main branch.
 
-##### 
++ Pull requests.
++ New pull request.
++ Base repository: main, head repository: <branch_name>.
++ Add descriptions.
++ Create pull request.
++ Merge pull request.
+
+##### Workflow
+
++ Fork a repository.
++ Clone your fork locally.
+
+```
+git clone <URL>
+```
+
++ Add the original repository as an upstream remote to sync changes.
+
+```
+git remote add upstream <URL>
+git remote -v
+```
+
++ Always work on a new branch.
+
+```
+git checkout -b <branch_name>
+```
+
++ Commit.
+
+```
+git add .
+git commit -m "<description>"
+```
+
++ Push to your fork.
+
+`origin` points to your fork on GitHub.
+
+`upstream` points to the original repository you forked from.
+
+```
+git push origin <branch_name>
+```
+
++ Create a pull request.
+
++ Keep your fork updated.
+
+```
+git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main
+```
+
